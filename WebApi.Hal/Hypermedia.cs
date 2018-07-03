@@ -1,3 +1,4 @@
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,14 @@ namespace WebApi.Hal
         private readonly IDictionary<Type, Link> selfLinks = new Dictionary<Type, Link>();
         private readonly IDictionary<Type, IList<Link>> hypermedia = new Dictionary<Type, IList<Link>>();
         private readonly IDictionary<Type, object> appenders = new Dictionary<Type, object>();
+        private readonly IServiceProvider _serviceProvider;
+
+        public Hypermedia() { }
+
+        public Hypermedia(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
 
         public static IHypermediaBuilder CreateBuilder()
         {
@@ -81,6 +90,11 @@ namespace WebApi.Hal
 
         public IHypermediaAppender<T> ResolveAppender<T>(T resource) where T: class, IResource
         {
+            if (_serviceProvider != null)
+            {
+                return _serviceProvider.GetService<IHypermediaAppender<T>>();
+            }
+
             var type = resource.GetType();
 
             if (!appenders.ContainsKey(type)) 
