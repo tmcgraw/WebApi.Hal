@@ -47,7 +47,8 @@ namespace WebApi.Hal
             SerializerSettings.Converters.Add(_linksConverter);
             SerializerSettings.Converters.Add(_resourceConverter);
             SerializerSettings.Converters.Add(_embeddedResourceConverter);
-            SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+// Use the null handling serialization settings supplied by the client of this class            
+//            SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
         }
         
         protected override bool CanWriteType(Type type)
