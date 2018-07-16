@@ -47,10 +47,13 @@ namespace WebApi.Hal
             SerializerSettings.Converters.Add(_linksConverter);
             SerializerSettings.Converters.Add(_resourceConverter);
             SerializerSettings.Converters.Add(_embeddedResourceConverter);
-// Use the null handling serialization settings supplied by the client of this class            
-//            SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
         }
-        
+
+        protected override JsonSerializer CreateJsonSerializer()
+        {
+            return JsonSerializer.Create(this.SerializerSettings);
+        }
+
         protected override bool CanWriteType(Type type)
         {
             return typeof(Representation).IsAssignableFrom(type);
