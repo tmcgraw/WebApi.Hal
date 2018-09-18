@@ -53,10 +53,5 @@ namespace WebApi.Hal
         {
             return JsonSerializer.Create(this.SerializerSettings);
         }
-
-        protected override bool CanWriteType(Type type)
-        {
-            return typeof(Representation).IsAssignableFrom(type);
-        }
     }
 }

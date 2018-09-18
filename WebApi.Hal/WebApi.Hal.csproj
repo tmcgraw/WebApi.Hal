@@ -4,8 +4,8 @@
   
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <Version>3.0.3</Version>
-    <PackageVersion>3.0.3</PackageVersion>
+    <Version>3.0.5</Version>
+    <PackageVersion>3.0.5</PackageVersion>
     <Copyright>Copyright © Jake Ginnivan 2018</Copyright>
     <Description>Adds support for the Hal Media Type (and Hypermedia) to Asp.net. This is a TR fork of the original project</Description>
     <ProjectUrl>https://github.com/JakeGinnivan/WebApi.Hal</ProjectUrl>
